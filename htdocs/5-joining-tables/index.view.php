@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cheese!</title>
+    <title>Cheese</title>
 </head>
 
 <body>

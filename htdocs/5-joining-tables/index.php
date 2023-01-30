@@ -1,11 +1,11 @@
 <?php
 
-require 'db/Database.php';
+require '../db/Database.php';
 
 // hint: try your queries out FIRST in CLI or in your GUI tool
 // hint: use heredoc strings
-$config = require 'db/config.php';
-$db = new Database($config, 'root', 'mariadb');
+$config = require '../db/config.php';
+$db = new Database($config);
 
 $query = <<<QUERY
     SELECT ch.name as cheese, cl.name as type
@@ -13,6 +13,8 @@ $query = <<<QUERY
     ON ch.classification_id = cl.id
 QUERY;
 
-$results = $db->query($query)->fetchAll();
+$results = $db->run($query)->fetchAll();
 
-require 'index.view..php';
+$db = null;
+
+require 'index.view.php';
