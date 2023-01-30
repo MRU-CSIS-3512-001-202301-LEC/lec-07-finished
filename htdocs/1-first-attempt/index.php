@@ -7,9 +7,9 @@
 $dsn = "mysql:host=127.0.0.1;port=3306;dbname=cheese_db;charset=utf8mb4";
 
 try {
-    $pdo = new PDO($dsn, "root", "mariadb");
+  $pdo = new PDO($dsn, "root", "mariadb");
 } catch (PDOException $e) {
-    die($e->getMessage()); // ⚠️ this provides a bit too much info
+  die($e->getMessage()); // ⚠️ this provides a bit too much info
 }
 
 // ⚠️ hint: try your queries out FIRST in CLI or in your GUI tool
@@ -31,16 +31,16 @@ $pdo = null;
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Cheese</title>
+  <meta charset="UTF-8">
+  <title>Cheese</title>
 </head>
 
 <body>
-    <ul>
-        <?php foreach ($results as $result) : ?>
-            <li><?= $result['cheese'] ?> </li>
-        <?php endforeach ?>
-    </ul>
+  <ul>
+    <?php foreach ($results as $result) : ?>
+      <li><?= $result['cheese'] ?> </li>
+    <?php endforeach ?>
+  </ul>
 </body>
 
 </html>

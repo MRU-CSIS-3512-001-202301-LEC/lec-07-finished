@@ -1,4 +1,4 @@
-<?php // http://127.0.0.1:8080/5-joining-tables/ 
+<?php // http://127.0.0.1:8080/6-outside-data-dangerously/ 
 ?>
 
 <?php
@@ -20,11 +20,8 @@ $query = <<<QUERY
     WHERE cl.id = $ch_type_id
 QUERY;
 
-// tru http://127.0.0.1:8080/6-outside-data-dangerously/?type=1
-// 💀 try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1%20or%201=1
-// 💀💀💀 try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1;%20drop%20table%20cheese
 
-die(var_dump($query));
+// die(var_dump($query));
 
 $results = $db_helper->run($query);
 

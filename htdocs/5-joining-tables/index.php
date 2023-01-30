@@ -13,8 +13,8 @@ $db_helper = new DatabaseHelper($config);
 // ⚠️ hint: try your queries out FIRST in CLI or in your GUI tool
 // ⚠️ hint: use heredoc strings
 $query = <<<QUERY
-    SELECT ch.name as cheese, cl.name as type
-    FROM cheese ch inner join classification cl 
+    SELECT ch.name AS cheese, cl.name AS type
+    FROM cheese ch INNER JOIN classification cl 
     ON ch.classification_id = cl.id
 QUERY;
 
