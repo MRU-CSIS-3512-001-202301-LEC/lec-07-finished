@@ -1,4 +1,4 @@
-<?php // http://127.0.0.1:8080/2-db-helper-class/ 
+<?php // http://127.0.0.1:8080/1-first-attempt/ 
 ?>
 
 <?php
@@ -22,6 +22,8 @@ $query = <<<QUERY
 QUERY;
 
 $results = $pdo->query($query);
+
+$pdo = null;
 
 ?>
 

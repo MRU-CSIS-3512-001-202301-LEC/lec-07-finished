@@ -1,4 +1,4 @@
-<?php // http://127.0.0.1:8080/2-db-helper-class/ 
+<?php // http://127.0.0.1:8080/3-db-helper-class-v2/ 
 ?>
 
 <?php
@@ -8,13 +8,20 @@ class DatabaseHelper
 
     public $connection;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $dsn = "mysql:host=127.0.0.1;port=3306;dbname=cheese_db;charset=utf8mb4";
+        $host = $config['host'] ?? '127.0.0.1';
+        $port = $config['port'] ?? '3306';
+        $dbname = $config['dbname'];
+        $charset = $config['charset'] ?? 'utf8mb4';
+        $username = $config['username'];
+        $password = $config['password'];
+
+        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
         try {
-            $this->connection = new PDO($dsn, "root", "mariadb");
+            $this->connection = new PDO($dsn, $username, $password);
         } catch (PDOException $e) {
-            die("DB problem. Belly up I go."); // ⚠️ you'd likely log this and alert a tech in real life
+            die("DB problem. Belly up I go.");
         }
     }
 
@@ -39,7 +46,13 @@ class DatabaseHelper
 
 <?php
 
-$db_helper = new DatabaseHelper();
+$config = [
+    "username" => "root",
+    "password" => "mariadb",
+    "dbname" => "cheese_db"
+];
+
+$db_helper = new DatabaseHelper($config);
 
 $query = <<<QUERY
     SELECT ch.name AS cheese

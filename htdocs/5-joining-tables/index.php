@@ -1,20 +1,25 @@
+<?php // http://127.0.0.1:8080/5-joining-tables/ 
+?>
+
 <?php
 
-require '../db/Database.php';
+require 'db/DatabaseHelper.php';
 
-// hint: try your queries out FIRST in CLI or in your GUI tool
-// hint: use heredoc strings
-$config = require '../db/config.php';
-$db = new Database($config);
+$config = require 'db/config.php';
 
+$db_helper = new DatabaseHelper($config);
+
+
+// ⚠️ hint: try your queries out FIRST in CLI or in your GUI tool
+// ⚠️ hint: use heredoc strings
 $query = <<<QUERY
     SELECT ch.name as cheese, cl.name as type
     FROM cheese ch inner join classification cl 
     ON ch.classification_id = cl.id
 QUERY;
 
-$results = $db->run($query)->fetchAll();
+$results = $db_helper->run($query);
 
-$db = null;
+$db_helper->close_connection();
 
-require 'index.view.php';
+require 'views/index.view.php';
